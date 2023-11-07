@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" (click)="promeniKontekst('radionice')">Radionice</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  (click)="promeniKontekst('mojeRadionice')">Moje radionice</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  (click)="promeniKontekst('dodajRadionicu')">Dodaj radionicu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  (click)="promeniKontekst('poruke')">Poruke</a>
+          </li>
+        </ul>
+        <div class="d-flex center nav-item">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Profil
+                      <img src="../../assets/icons8-customer-50.png" alt="">
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" (click)="promeniKontekst('promenaLozinke')">Promeni lozinku</a></li>
+                      <li><a class="dropdown-item" (click)="odjaviSe()">Odjavi se</a></li>
+                    </ul>
+                </li>
+              </ul>
+              <img [src]="organizator.slika" alt="" class="img-fluid img-thumbnail">
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container"> 
+    <div *ngIf="trenutniKontekst == 'radionice'">
+        <app-radionice-organizator></app-radionice-organizator>
+      </div>
+      <div *ngIf="trenutniKontekst == 'mojeRadionice'">
+        <app-moje-radionice></app-moje-radionice>
+      </div>
+      <div *ngIf="trenutniKontekst == 'dodajRadionicu'">
+        <app-dodaj-radionicu></app-dodaj-radionicu>
+      </div>
+      <div *ngIf="trenutniKontekst == 'detaljiRadionice'">
+        <app-moja-radionica-detalji></app-moja-radionica-detalji>
+      </div>
+      <div *ngIf="trenutniKontekst == 'promenaLozinke'">
+        <app-promeni-lozinku-o></app-promeni-lozinku-o>
+      </div>
+      <div *ngIf="trenutniKontekst == 'poruke'">
+        <app-poruke></app-poruke>
+      </div>
+  </div>

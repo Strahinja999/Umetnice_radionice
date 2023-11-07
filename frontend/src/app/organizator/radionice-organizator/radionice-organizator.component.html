@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>Radionice</h2>
+        <table class="table-striped table ">
+            <thead>
+                <tr>
+                    <th>Organizator</th>
+                    <th>Naziv</th>
+                    <th>Kratak opis</th>
+                    <th>Dugacak opis</th>
+                    <th>Mesto odrzavanja</th>
+                    <th>Datum odrzavanja</th>
+                    <th>Ukupan broj mesta</th>
+                    <th>Broj rezervisanih mesta</th>
+                    <th>Broj lajkova</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let r of radionice"> 
+                    <td>{{r.organizator}}</td>
+                    <td>{{r.naziv}}</td>
+                    <td>{{r.kratakOpis}}</td>
+                    <td>{{r.dugacakOpis}}</td>
+                    <td>{{r.mestoOdrzavanja}}</td>
+                    <td>{{r.datum | date : "dd.MM.y"}}</td>
+                    <td>{{r.ukupnoMesta}}</td>
+                    <td>{{r.rezervisanaMesta}}</td>
+                    <td>{{r.lajkovi}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

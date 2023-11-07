@@ -1,0 +1,14 @@
+.razmak{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.raspored{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.table{
+    text-align: center;
+}

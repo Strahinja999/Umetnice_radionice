@@ -1,0 +1,8 @@
+.centralno-poravnanje{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.pozadina{
+    background-color: azure;
+}

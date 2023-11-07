@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h2>Dodaj novu radionicu</h2>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Naziv</span>
+                <input type="text" class="form-control"  [(ngModel)]="naziv">
+            </div>
+            <div style="text-align: center;">
+                <mat-form-field appearance="fill" color="accent">
+                    <mat-label>Datum</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="datum">
+                    <mat-hint>Izaberite datum: MM/DD/GGGG</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Mesto odrzavanja</span>
+                <input type="text" class="form-control"  [(ngModel)]="mesto">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text"  >Kratak opis radionice</span>
+                <input type="text" class="form-control"[(ngModel)]="kratakOpis">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Dugacak opis radionice</span>
+                <input type="text" class="form-control"  [(ngModel)]="dugacakOpis">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Ukupno mesta</span>
+                <input type="number" class="form-control"  [(ngModel)]="brMesta">
+            </div>
+            <div style="text-align: center;">
+                <label for="slikaU" class="btn btn-outline-dark ">Slika radionice</label>
+                <input id="slikaU" type="file" style="visibility:hidden;" (change)="CreateBase64String($event)" class="fileInputProfile form-control">
+            </div>
+            
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row" style="text-align: center;">
+        <div class="col-md-12">
+            <button class="btn btn-outline-dark" (click)="dodaj()">Dodaj</button>
+            <span style="color: red;">{{porukaGreska}}</span>
+            <span>{{porukaUspesno}}</span>
+        </div>
+    </div>
+    <div class="row" style="text-align: center;">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <br>
+            <input  type="file" (change)="uploadJSON($event)" class="fileInputProfile form-control">
+            <br>
+            <button class="btn btn-outline-dark" (click)="dodajR()">Dodaj kao sablon</button>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>

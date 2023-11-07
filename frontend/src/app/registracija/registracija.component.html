@@ -1,0 +1,126 @@
+
+<div class="container">
+    <div class="row">
+        <br>
+    </div>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6 centralno-poravnanje card" >
+            <div class="card-body">
+                <h3>Registracija</h3>
+                <div class="linijsko-poravnanje">
+                    <div class="form-check">
+                        <input class="form-check-input" (change)="azurirajTip('ucesnik')" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked [(ngModel)]="isVisible" [value]="1" [checked]="isSelected">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          UCESNIK
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" (change)="azurirajTip('organizator')" type="radio" name="flexRadioDefault" id="flexRadioDefault2" [(ngModel)]="isVisible" [value]="2" [checked]="!isSelected">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          ORGANIZATOR
+                        </label>
+                      </div>
+                </div>
+                <div *ngIf="isVisible == 1">
+    
+                    <div class="input-group">
+                        <span class="input-group-text">Ime</span>
+                        <input type="text"  class="form-control" [(ngModel)]='imeU'>
+                        <span class="input-group-text">Prezime</span>
+                        <input type="text" class="form-control" [(ngModel)]='prezimeU'>
+                      </div>
+                      <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Korisničko ime</span>
+                        <input type="text" class="form-control"  aria-describedby="inputGroup-sizing-default" [(ngModel)]='korisnickoImeU'>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Lozinka</span>
+                        <input type="password" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='lozinkaU'>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Potvrda lozinke</span>
+                        <input type="password" class="form-control"  aria-describedby="inputGroup-sizing-default" [(ngModel)]='lozinkaPotvrdaU'>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Kontakt telefon</span>
+                        <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='telefonU' placeholder="+381 xx xxxxxxx">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">E-mail</span>
+                        <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='emailU'>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label for="slikaU" class="btn btn-outline-dark ">Profilna slika</label>
+                        <input id="slikaU" type="file" style="visibility:hidden;" (change)="CreateBase64String($event)" class="fileInputProfile form-control">
+                    </div>
+                    <button (click)="registracija()" type="button" class="btn btn-light">Registruj se</button>
+                </div>
+                <div *ngIf="isVisible == 2">
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Korisničko ime</span>
+                        <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='korisnickoImeO'>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Lozinka</span>
+                        <input type="password" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='lozinkaO'>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Potvrda lozinke</span>
+                        <input type="password" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='lozinkaPotvrdaO'>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Kontakt telefon</span>
+                        <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='telefonO' placeholder="+381 xx xxxxxxx"s>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">E-mail</span>
+                        <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='emailO'>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Naziv organizacije</span>
+                        <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='nazivO'>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Maricni broj</span>
+                        <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='maticniBrojO'>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Drzava</span>
+                        <input type="text" class="form-control" [(ngModel)]='drzavaO'>
+                        <span class="input-group-text">Grad</span>
+                        <input type="text" class="form-control" [(ngModel)]='gradO'>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text">Ulica</span>
+                        <input type="text" class="form-control" [(ngModel)]='ulicaO'>
+                        <span class="input-group-text">Broj</span>
+                        <input type="number" class="form-control" [(ngModel)]='brojO'>
+                        <span class="input-group-text">Postanski broj</span>
+                        <input type="text" class="form-control" [(ngModel)]='postanskiBrojO'>
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <label for="slikaU" class="btn btn-outline-dark ">Profilna slika</label>
+                        <input id="slikaU" type="file" style="visibility:hidden;" (change)="CreateBase64String($event)" class="fileInputProfile form-control">
+                    </div>
+                    <button (click)="registracija()" type="button" class="btn btn-light">Registruj se</button>
+                </div>
+                <br>
+                <span class="greska">{{poruka}}</span>
+                <span>{{lozinkaPoruka}}</span>
+            </div>
+            
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,489 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="razmak">
+            <h2>Ucesnici</h2>
+            <button class="btn btn-outline-dark" (click)="dodajU()">Dodaj novog ucesnika</button>
+        </div>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Korisnicko ime</th>
+                    <th scope="col">Lozinka</th>
+                    <th scope="col">Ime</th>
+                    <th scope="col">Prezime</th>
+                    <th scope="col">Telefon</th>
+                    <th scope="col">Odobreno</th>
+                    <th scope="col">Azuriraj</th>
+                    <th scope="col">Obrisi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of ucesnici">
+                    <td>{{u.korisnickoIme}}</td>
+                    <td>{{u.lozinka}}</td>
+                    <td>{{u.ime}}</td>
+                    <td>{{u.prezime}}</td>
+                    <td>{{u.telefon}}</td>
+                    <td>{{u.odobreno}}</td>
+                    <td><button class="btn btn-outline-dark" (click)="azurirajU(u.korisnickoIme)">Azuriraj</button></td>
+                    <td><button class="btn btn-outline-dark" (click)="obrisiUcesnika(u.korisnickoIme)">Obrisi</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br>
+<div class="row" *ngIf="azurirajUcesnikaBool">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h3>Azuriraj ucesnika</h3>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Korisnicko ime</th>
+                    <td>
+                        <div *ngIf="!izmeniKorisnickoImeUBool">
+                            {{ucesnikAzuriraj.korisnickoIme}}
+                        </div>
+                        <div *ngIf="izmeniKorisnickoImeUBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="Korisnicko ime" [(ngModel)]="korisnickoImeNovoU">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleU('korisnickoIme')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Lozinka</th>
+                    <td>
+                        <div *ngIf="!izmeniLozinkuUBool">
+                            {{ucesnikAzuriraj.lozinka}}
+                        </div>
+                        <div *ngIf="izmeniLozinkuUBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="lozinka" [(ngModel)]="lozinkaNovaU">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleU('lozinka')" >
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Ime</th>
+                    <td>
+                        <div *ngIf="!izmeniImeUBool">
+                            {{ucesnikAzuriraj.ime}}
+                        </div>
+                        <div *ngIf="izmeniImeUBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="ime" [(ngModel)]="imeNovoU">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleU('ime')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Prezime</th>
+                    <td>
+                        <div *ngIf="!izmeniPrezimeUBool">
+                            {{ucesnikAzuriraj.prezime}}
+                        </div>
+                        <div *ngIf="izmeniPrezimeUBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="prezime" [(ngModel)]="prezimeNovoU"> 
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleU('prezime')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Telefon</th>
+                    <td>
+                        <div *ngIf="!izmeniTelefonUBool">
+                            {{ucesnikAzuriraj.telefon}}
+                        </div>
+                        <div *ngIf="izmeniTelefonUBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="telefon" [(ngModel)]="telefonNovU">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleU('telefon')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>
+                        <div *ngIf="!izmeniEmailUBool">
+                            {{ucesnikAzuriraj.email}}
+                        </div>
+                        <div *ngIf="izmeniEmailUBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="email" [(ngModel)]="emailNovU">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleU('email')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: center;">
+                        <button class="btn btn-outline-dark" (click)="azurirajUcesnika()">Azuriraj</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+<div class="row" *ngIf="dodajUBool">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h2>Dodaj Ucesnika</h2>
+        <div class="input-group">
+            <span class="input-group-text">Ime</span>
+            <input type="text"  class="form-control" [(ngModel)]="imeU">
+            <span class="input-group-text">Prezime</span>
+            <input type="text" class="form-control" [(ngModel)]="prezimeU">
+          </div>
+          <br>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Korisničko ime</span>
+            <input type="text" class="form-control"  aria-describedby="inputGroup-sizing-default" [(ngModel)]="korImeU">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Lozinka</span>
+            <input type="password" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]="lozU">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Potvrda lozinke</span>
+            <input type="password" class="form-control"  aria-describedby="inputGroup-sizing-default" [(ngModel)]="potvLozU">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Kontakt telefon</span>
+            <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default"  placeholder="+381 xx xxxxxxx" [(ngModel)]="telU">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">E-mail</span>
+            <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]="emailU">
+        </div>
+        <div class="raspored">
+            <button type="button" class="btn btn-outline-dark" (click)="dodajUcesnika()">Dodaj ucesnika</button>
+            <br>
+            <span style="color: red;">{{porukaUcesnik}}</span>
+            <span>{{porukaUcesnikUspesno}}</span>
+        </div>
+        
+    </div>
+    <div class="col-md-4"></div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-12">
+        <div class="razmak">
+            <h2>Organizatori</h2>
+            <button class="btn btn-outline-dark" (click)="dodajO()">Dodaj novog organizatora</button>
+        </div>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Korisnicko ime</th>
+                    <th scope="col">Lozinka</th>
+                    <th scope="col">Naziv</th>
+                    <th scope="col">Drzava</th>
+                    <th scope="col">Grad</th>
+                    <th scope="col">Postanski broj</th>
+                    <th scope="col">Ulica</th>
+                    <th scope="col">Broj</th>
+                    <th scope="col">Telefon</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Odobreno</th>
+                    <th scope="col">Maticni broj</th>
+                    <th scope="col">Azuriraj</th>
+                    <th scope="col">Obrisi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let o of organizatori">
+                    <td>{{o.korisnickoIme}}</td>
+                    <td>{{o.lozinka}}</td>
+                    <td>{{o.naziv}}</td>
+                    <td>{{o.drzava}}</td>
+                    <td>{{o.grad}}</td>
+                    <td>{{o.postanskiBroj}}</td>
+                    <td>{{o.ulica}}</td>
+                    <td>{{o.broj}}</td>
+                    <td>{{o.telefon}}</td>
+                    <td>{{o.email}}</td>
+                    <td>{{o.odobreno}}</td>
+                    <td>{{o.maticniBroj}}</td>
+                    <td><button class="btn btn-outline-dark" (click)="azurirajO(o.korisnickoIme)">Azuriraj</button></td>
+                    <td><button class="btn btn-outline-dark" (click)="obrisiOrganizatora(o.korisnickoIme)">Obrisi</button></td>
+                </tr>
+            </tbody>
+            
+            
+        </table>
+    </div>
+</div>
+<br>
+<div class="row" *ngIf="dodajOBool">
+    <div class="col-md-4"></div>
+    <div class="col-md-4"> 
+        <h2>Dodaj organizatora</h2>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Korisničko ime</span>
+            <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='korImeO'>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Lozinka</span>
+            <input type="password" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='lozO'>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Potvrda lozinke</span>
+            <input type="password" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='potvLozO'>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Kontakt telefon</span>
+            <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='telO' placeholder="+381 xx xxxxxxx">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">E-mail</span>
+            <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='emailO'>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Naziv organizacije</span>
+            <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='nazivO'>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Maricni broj</span>
+            <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='matBrO'>
+        </div>
+        <div class="input-group">
+            <span class="input-group-text">Drzava</span>
+            <input type="text" class="form-control" [(ngModel)]='drzavaO'>
+            <span class="input-group-text">Grad</span>
+            <input type="text" class="form-control" [(ngModel)]='gradO'>
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-text">Ulica</span>
+            <input type="text" class="form-control" [(ngModel)]='ulicaO'>
+            <span class="input-group-text">Broj</span>
+            <input type="number" class="form-control" [(ngModel)]='brojO'>
+            <span class="input-group-text">Postanski broj</span>
+            <input type="text" class="form-control" [(ngModel)]='posBrO'>
+        </div>
+        <br>
+        <div class="raspored">
+            <button (click)="dodajOrganizatora()" type="button" class="btn btn-outline-dark">Registruj se</button>
+            <br>
+            <span style="color: red;">{{porukaOrganizator}}</span>
+            <span>{{porukaOrganizatorUspesno}}</span>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+<div class="row" *ngIf="azurirajOrganizatoraBool">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h3>Azuriraj organizatora</h3>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Korisnicko ime</th>
+                    <td>
+                        <div *ngIf="!izmeniKorisnickoImeOBool">
+                            {{organizatorAzuriraj.korisnickoIme}}
+                        </div>
+                        <div *ngIf="izmeniKorisnickoImeOBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="Korisnicko ime" [(ngModel)]="korisnickoImeNovoO">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleO('korisnickoIme')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Lozinka</th>
+                    <td>
+                        <div *ngIf="!izmeniLozinkuOBool">
+                            {{organizatorAzuriraj.lozinka}}
+                        </div>
+                        <div *ngIf="izmeniLozinkuOBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="lozinka" [(ngModel)]="lozinkaNovaO">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleO('lozinka')" >
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Naziv</th>
+                    <td>
+                        <div *ngIf="!izmeniNazivOBool">
+                            {{organizatorAzuriraj.naziv}}
+                        </div>
+                        <div *ngIf="izmeniNazivOBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="naziv" [(ngModel)]="nazivNovO">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleO('naziv')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Drzava</th>
+                    <td>
+                        <div *ngIf="!izmeniDrzavuOBool">
+                            {{organizatorAzuriraj.drzava}}
+                        </div>
+                        <div *ngIf="izmeniDrzavuOBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="drzava" [(ngModel)]="drazavaNovaO"> 
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleO('drzava')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Grad</th>
+                    <td>
+                        <div *ngIf="!izmeniGradOBool">
+                            {{organizatorAzuriraj.grad}}
+                        </div>
+                        <div *ngIf="izmeniGradOBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="grad" [(ngModel)]="gradNovO">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleO('grad')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Postanski broj</th>
+                    <td>
+                        <div *ngIf="!izmeniPostanskiBrojBool">
+                            {{organizatorAzuriraj.postanskiBroj}}
+                        </div>
+                        <div *ngIf="izmeniPostanskiBrojBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="postanski broj" [(ngModel)]="postanskiBrojNovO">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleO('postanskiBroj')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Ulica</th>
+                    <td>
+                        <div *ngIf="!izmeniUlicuOBool">
+                            {{organizatorAzuriraj.ulica}}
+                        </div>
+                        <div *ngIf="izmeniUlicuOBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="ulica" [(ngModel)]="ulicaNovaO">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleO('ulica')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Broj</th>
+                    <td>
+                        <div *ngIf="!izmeniBrojOBool">
+                            {{organizatorAzuriraj.broj}}
+                        </div>
+                        <div *ngIf="izmeniBrojOBool">
+                            <input type="number" name="" id="" class="form-control" placeholder="broj" [(ngModel)]="brojNovO">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleO('broj')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Telefon</th>
+                    <td>
+                        <div *ngIf="!izmeniTelefonOBool">
+                            {{organizatorAzuriraj.telefon}}
+                        </div>
+                        <div *ngIf="izmeniTelefonOBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="telefon" [(ngModel)]="telefonNovO">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleO('telefon')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>
+                        <div *ngIf="!izmeniEmailOBool">
+                            {{organizatorAzuriraj.email}}
+                        </div>
+                        <div *ngIf="izmeniEmailOBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="email" [(ngModel)]="emailNovO">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleO('email')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Maticni broj</th>
+                    <td>
+                        <div *ngIf="!izmeniMaticniBrojOBool">
+                            {{organizatorAzuriraj.maticniBroj}}
+                        </div>
+                        <div *ngIf="izmeniMaticniBrojOBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="maticni broj" [(ngModel)]="postanskiBrojNovO">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggleO('maticniBroj')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: center;">
+                        <button class="btn btn-outline-dark" (click)="azurirajOrganizatora()">Azuriraj</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4"></div>
+</div>

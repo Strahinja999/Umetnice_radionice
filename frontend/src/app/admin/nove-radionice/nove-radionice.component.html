@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>Zahtevi za radionice</h2>
+        <table  class="table-striped table ">
+            <thead>
+                <th>Organizator</th>
+                    <th>Naziv</th>
+                    <th>Kratak opis</th>
+                    <th>Dugacak opis</th>
+                    <th>Mesto odrzavanja</th>
+                    <th>Datum odrzavanja</th>
+                    <th>Ukupan broj mesta</th>
+                    <th>Broj rezervisanih mesta</th>
+                    <th>Broj lajkova</th>
+                    <th>Status</th>
+                    <th>Prihvati</th>
+                    <th>Odbi</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let r of radionice"> 
+                    <td>{{r.organizator}}</td>
+                    <td>{{r.naziv}}</td>
+                    <td>{{r.kratakOpis}}</td>
+                    <td>{{r.dugacakOpis}}</td>
+                    <td>{{r.mestoOdrzavanja}}</td>
+                    <td>{{r.datum | date : "dd.MM.y"}}</td>
+                    <td>{{r.ukupnoMesta}}</td>
+                    <td>{{r.rezervisanaMesta}}</td>
+                    <td>{{r.lajkovi}}</td>
+                    <td>{{r.status}}</td>
+                    <td>
+                        <button class="btn btn-outline-dark" (click)="prihvati(r)">Prihvati</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-dark" (click)="odbi(r)">Odbi</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h1>{{porukaGreska}}</h1>
+        <h1>{{porukaUspesno}}</h1>
+    </div>
+</div>

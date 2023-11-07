@@ -1,0 +1,30 @@
+
+<div class="container">
+    <div class="row">
+        <br>
+    </div>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6 centralno-poravnanje"  >
+            <h2>Prijavljivanje administratora</h2>
+            <table>
+                <tr>
+                    <td>Korisničko ime: </td>
+                    <input type="text" name="korisnickoIme" [(ngModel)]='korisnickoIme' >
+                </tr>
+                <tr>
+                    <td>Lozinka: </td>
+                    <input type="password" name="lozinka" [(ngModel)]='lozinka'>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button (click)="prijavaAdmin()" type="button" class="btn btn-light">Prijavi se</button>
+                    </td>
+                </tr>
+            </table>
+            <span>{{greskaPoruka}}</span>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+

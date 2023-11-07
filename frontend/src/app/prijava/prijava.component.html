@@ -1,0 +1,34 @@
+
+<div class="conatiner">
+    <div class="row">
+        <br>
+    </div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 centralno-poravnanje centriran-tekst card">
+            <div class="card-body">
+                <h1 class="centriran-tekst">Prijava na sistem</h1>
+                <br>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Korisničko ime</span>
+                  <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='korisnickoIme'>
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Lozinka</span>
+                  <input type="password" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]='lozinka'>
+                </div>
+                <a routerLink="zaboravljenaLozinka">Zaboravljena lozinka</a>
+                <p>
+                  Ukoliko nemate nalog, <a routerLink="registracija">registrujte se</a>
+                </p>
+                <button (click)="prijava()" type="button" class="btn btn-outline-dark">Prijavi se</button>
+                <br>
+                <span class="greska">{{greskaPoruka}}</span>
+            </div>
+            
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>
+
+

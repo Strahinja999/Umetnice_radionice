@@ -1,0 +1,84 @@
+
+            <h2>Ucesnici</h2>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th >Korisnicko ime</th >
+                        <th >Lozinka</th >
+                        <th >Ime</th >
+                        <th >Prezime</th >
+                        <th >Telefon</th >
+                        <th >E-mail</th>
+                        <th >Odobreno</th >
+                        <th >Prihvati / Odbi</th >
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let u of ucesnici'>
+                        <td>{{u.korisnickoIme}}</td>
+                        <td>{{u.lozinka}}</td>
+                        <td>{{u.ime}}</td>
+                        <td>{{u.prezime}}</td>
+                        <td>{{u.telefon}}</td>
+                        <td>{{u.email}}</td>
+                        <td>{{u.odobreno}}</td>
+                        <td>
+                            <button class="btn" *ngIf="u.odobreno == 1">
+                                <img src="../../../assets/icons8-cancel-48.png" alt="" (click)="odbiUcesnika(u.korisnickoIme)">
+                            </button>
+                            <button class="btn" *ngIf="u.odobreno == 0">
+                                <img src="../../../assets/icons8-accept-48.png" alt=""(click)="prihvatiUcesnika(u.korisnickoIme)">
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                
+            </table>
+            
+        <div class="row">
+            <h2>Organizatori</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th >Korisnicko ime</th >
+                        <th >Lozinka</th >
+                        <th >Naziv</th >
+                        <th >Maticni broj</th>
+                        <th >Država</th >
+                        <th >Grad</th >
+                        <th >Poštancki broj</th >
+                        <th >Ulica</th >
+                        <th >Broj</th >
+                        <th >Telefon</th >
+                        <th >E-mail</th >
+                        <th >Odobreno</th>
+                        <th>Prihvati / Odbi</th >
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let o of organizatori">
+                        <td>{{o.korisnickoIme}}</td>
+                        <td>{{o.lozinka}}</td>
+                        <td>{{o.naziv}}</td>
+                        <td>{{o.maticniBroj}}</td>
+                        <td>{{o.drzava}}</td>
+                        <td>{{o.grad}}</td>
+                        <td>{{o.postanskiBroj}}</td>
+                        <td>{{o.ulica}}</td>
+                        <td>{{o.broj}}</td>
+                        <td>{{o.telefon}}</td>
+                        <td>{{o.email}}</td>
+                        <td>{{o.odobreno}}</td>
+                        <td>
+                            <button class="btn" *ngIf="o.odobreno == 1">
+                                <img src="../../../assets/icons8-cancel-48.png" alt="" (click)="odbiOrganizatora(o.korisnickoIme)">
+                            </button>
+                            <button class="btn" *ngIf="o.odobreno == 0">
+                                <img src="../../../assets/icons8-accept-48.png" alt="" (click)="prihvatiOrganizatora(o.korisnickoIme)">
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>

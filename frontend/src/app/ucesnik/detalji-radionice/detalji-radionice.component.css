@@ -1,0 +1,18 @@
+.centar{
+    text-align: center;
+}
+
+.razmak{
+    display: flex;
+    justify-content: center;
+}
+.razmak p{
+    margin-left: 10px;
+    font-size: larger;
+    vertical-align: middle;
+    margin-top: 10px;
+}
+
+.raspored{
+    display: flex;justify-content: space-around;
+}

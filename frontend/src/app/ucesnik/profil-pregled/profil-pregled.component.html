@@ -1,0 +1,188 @@
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <h1>Pregled profila</h1>
+    <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">
+                <img src="../../../assets/icons8-person-48.png" alt="">
+                Korisničko ime :
+            </th>
+            <td>{{ucesnik.korisnickoIme}}</td>
+          </tr>
+          <tr>
+            <th scope="row">
+                <img src="../../../assets/icons8-badge-48.png" alt="">
+                Ime i prezime :
+            </th>
+            <td>{{ucesnik.ime}} {{ucesnik.prezime}}</td>
+          </tr>
+          <tr>
+            <th scope="row">
+                <img src="../../../assets/icons8-phone-48.png" alt="">
+                Telefon :
+            </th>
+            <td>{{ucesnik.telefon}}</td>
+          </tr>
+          <tr>
+            <th scope="row">
+                <img src="../../../assets/icons8-gmail-logo-48.png" alt="">
+                Email :
+            </th>
+            <td>{{ucesnik.email}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <h1>Radionice na kojima ste ucestovali</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">
+            Naziv
+            <button class="btn" (click) = "sortirajPoNazivu()"><img src="../../../assets/icons8-alphabetical-sorting-28.png" alt=""></button>
+          </th>
+          <th scope="col">
+            Kratak Opis
+            <button class="btn" (click) = "sortirajPoOpisu()"><img src="../../../assets/icons8-alphabetical-sorting-28.png" alt=""></button>
+          </th>
+          <th scope="col">
+            Mesto odrzavanja
+            <button class="btn" (click) = "sortirajPoMestu()"><img src="../../../assets/icons8-alphabetical-sorting-28.png" alt=""></button>
+          </th>
+          <th scope="col">
+            Datum odrzavanja
+            <button class="btn" (click) = "sortirajPoDatumu()"><img src="../../../assets/icons8-sorting-28.png" alt=""></button>
+          </th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let r of radioniceP">
+          <td>{{r.naziv}}</td>
+          <td>{{r.kratakOpis}}</td>
+          <td>{{r.mestoOdrzavanja}}</td>
+          <td>{{r.datum | date :  "dd.MM.y"}} </td>
+        </tr>
+      </tbody>
+    </table>
+  <div class="col-md-2"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <h1>Komentari <img src="../../../assets/icons8-chat-bubble-48.png" alt=""></h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">
+              Naziv Radionice
+            </th>
+            <th scope="col">
+              Tekst komentara
+            </th>
+            <th scope="col">
+              Datum
+            </th>
+            <th></th>
+            <th>
+              <button class="btn" (click)="azurirajKomentar()">
+                <img src="../../../assets/icons8-edit-24.png" alt="">
+              </button>
+            </th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let k of komentari">
+            <td>{{k.nazivRadionice}}</td>
+            <td>
+              <p *ngIf="!azurirajKomentarBool">{{k.tekst}}</p>
+              <input *ngIf="azurirajKomentarBool" type="text" placeholder="Tekst komentara" [(ngModel)]="novTekstKomentara">
+            </td>
+            <td>{{k.datum | date :  "dd.MM.y"}} </td>
+            <td>
+              <button class="btn btn-outline-dark" (click)="obrisiKomentar(k.id)">Obrisi</button>
+            </td>
+            <td>
+              <button class="btn btn-outline-dark" *ngIf="azurirajKomentarBool" (click)="azurirajKomentarID(k.id)">Azuriraj</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <h1>Lajkovane radionice</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">
+            Naziv Radionice
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let rr of radioniceL">
+          <td>{{rr.naziv}}</td>
+          <td>
+            <button class="btn" (click)="odlajkuj(rr.id)">
+              <img src="../../../assets/icons8-dislike-28.png" alt="">
+            </button>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
+<div class="row">
+  <div class="col-md-3 sredina">
+    <h2>Poruke</h2>
+    <div *ngFor="let o of porukeSaOgranizatorima">
+      <button class="btn btn-outline-dark" (click)="prikaziPoruke(o)">{{o}}</button>
+      <hr>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <br>
+    <br>
+    <div *ngFor="let p of porukePrikaz">
+      <div *ngIf="p.fleg == 1" class="levo">
+        <img [src]="ucesnik.slika" alt="" class="slika rounded-circle">
+        <div>
+          <p class="margina">Ja, {{p.datum | date : "dd.MM.y, HH:mm"}}</p>
+          <span class="border border-3 rounded border-dark">{{p.tekst}}</span>
+        </div>
+      </div>
+      <div *ngIf="p.fleg == 0" class="desno">
+        <div>
+          <p class="margina">{{p.organizator}}, {{p.datum | date : "dd.MM.y, HH:mm"}}</p>
+          <span class="border border-3 rounded border-dark">{{p.tekst}}</span>
+        </div>
+        <img [src]="orgazniazatorPoruke.slika" alt="" class="slika rounded-circle">
+        
+      </div>
+      <p></p>
+    </div>
+    <br>
+    <br>
+    <br>
+  </div>
+  <div class="col-md-3"></div>
+</div>
+
+
+
+  

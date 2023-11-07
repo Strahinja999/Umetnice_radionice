@@ -1,0 +1,14 @@
+body{
+    
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.input-group-text{
+    background-color: #008000;
+    color: whitesmoke;
+}
+.form-control:focus{border-color: #008000; -webkit-box-shadow: none; border-width: 2px;} 
+
+.btn:focus{border-color: #008000;-webkit-box-shadow: none; }
+.btn:hover{background-color: #008000;}
