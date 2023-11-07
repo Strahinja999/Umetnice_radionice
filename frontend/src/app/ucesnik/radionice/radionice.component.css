@@ -1,0 +1,22 @@
+.table tbody tr td{
+    text-align: center;
+    align-items: center;
+}
+
+.razmak{
+    display: flex;
+    justify-content: space-between;
+}
+
+.centralno-poravnanje{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.card{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.img-fluid{
+    max-height: 350px;
+}

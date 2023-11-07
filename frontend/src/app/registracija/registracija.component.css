@@ -1,0 +1,18 @@
+.centralno-poravnanje{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.centriran-tekst{
+    text-align: center;
+}
+
+.linijsko-poravnanje{
+    display: flex;
+    justify-content: space-between;
+}
+
+.greska{
+    color: red;
+}

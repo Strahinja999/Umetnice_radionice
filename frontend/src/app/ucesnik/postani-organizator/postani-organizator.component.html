@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h2>Predlozi radionicu</h2>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Naziv</span>
+                <input type="text" class="form-control" [(ngModel)]="naziv">
+            </div>
+            <div>
+                <mat-form-field appearance="fill" color="accent">
+                    <mat-label>Datum</mat-label>
+                    <input matInput [matDatepicker]="picker"  [(ngModel)]="datum"> 
+                    <mat-hint>Unesite datum: MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <br>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Mesto odrzavanja</span>
+                <input type="text" class="form-control"  [(ngModel)]="mesto">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Kratak opis radionice</span>
+                <input type="text" class="form-control"  [(ngModel)]="kratakOpis">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Dugacak opis radionice</span>
+                <input type="text-area" class="form-control"  [(ngModel)]="dugacakOpis">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Ukupno mesta</span>
+                <input type="number" class="form-control"  [(ngModel)]="brojMesta">
+            </div>
+            <div>
+                <button class="btn btn-outline-dark" (click)="predlozi()">Predlozi radionicu</button>
+                <br>
+                <span style="color:red;">{{porukaGreska}}</span>
+                <span>{{porukaUspesno}}</span>
+            </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>

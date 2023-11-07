@@ -1,0 +1,31 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const admin_controller_1 = require("../controllers/admin.controller");
+const adminRuter = express_1.default.Router();
+adminRuter.route('/dohvatiSveUcesnike').get((req, res) => new admin_controller_1.AdminController().dohvatiSveUcesnike(req, res));
+adminRuter.route('/dohvatiUcesnika').post((req, res) => new admin_controller_1.AdminController().dohvatiUcesnika(req, res));
+adminRuter.route('/dodajUcesnika').post((req, res) => new admin_controller_1.AdminController().dodajUcesnika(req, res));
+adminRuter.route('/izmeniUcesnika').post((req, res) => new admin_controller_1.AdminController().izmeniUcesnika(req, res));
+adminRuter.route('/obrisiUcesnika').post((req, res) => new admin_controller_1.AdminController().obrisiUcesnika(req, res));
+adminRuter.route('/dohvatiSveOrganizatore').get((req, res) => new admin_controller_1.AdminController().dohvatiSveOrganizatore(req, res));
+adminRuter.route('/dohvatiOrganizatora').post((req, res) => new admin_controller_1.AdminController().dohvatiOrganizatora(req, res));
+adminRuter.route('/dodajOrganizatora').post((req, res) => new admin_controller_1.AdminController().dodajOrganizatora(req, res));
+adminRuter.route('/izmeniUcesnika').post((req, res) => new admin_controller_1.AdminController().izmeniUcesnika(req, res));
+adminRuter.route('/izmeniOrganizatora').post((req, res) => new admin_controller_1.AdminController().izmeniOrganizatora(req, res));
+adminRuter.route('/dohvatiKorisnika').post((req, res) => new admin_controller_1.AdminController().dohvatiKorisnika(req, res));
+adminRuter.route('/prihvatiUcesnika').post((req, res) => new admin_controller_1.AdminController().prihvatiUcesnika(req, res));
+adminRuter.route('/odbiUcesnika').post((req, res) => new admin_controller_1.AdminController().odbiUcesnika(req, res));
+adminRuter.route('/prihvatiOrganizatora').post((req, res) => new admin_controller_1.AdminController().prihvatiOrganizatora(req, res));
+adminRuter.route('/odbiOrganizatora').post((req, res) => new admin_controller_1.AdminController().odbiOrganizatora(req, res));
+adminRuter.route('/dohvatiSveRadionice').get((req, res) => new admin_controller_1.AdminController().dohvatiSveRadionice(req, res));
+adminRuter.route('/obrisiRadionicu').post((req, res) => new admin_controller_1.AdminController().obrisiRadionicu(req, res));
+adminRuter.route('/dodajRadionicu').post((req, res) => new admin_controller_1.AdminController().dodajRadionicu(req, res));
+adminRuter.route('/izmeniRadionicu').post((req, res) => new admin_controller_1.AdminController().izmeniRadionicu(req, res));
+adminRuter.route('/odobriRadionicuUcesnik').post((req, res) => new admin_controller_1.AdminController().odobriRadionicuUcesnik(req, res));
+adminRuter.route('/odobriRadionicuOrganizator').post((req, res) => new admin_controller_1.AdminController().odobriRadionicuOrganizator(req, res));
+exports.default = adminRuter;
+//# sourceMappingURL=admin.router.js.map

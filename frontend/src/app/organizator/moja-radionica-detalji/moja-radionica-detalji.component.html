@@ -1,0 +1,174 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h3>Detalji radionice i azuriranje podataka</h3>
+            <table class="table">
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                        Naziv radionice
+                    </th>
+                    <td>
+                        <p *ngIf="!izmeniNazivBool">{{radionica.naziv}}</p>
+                        <input type="text" class="form-control" placeholder="Naziv radionice" aria-describedby="basic-addon1" *ngIf="izmeniNazivBool" [(ngModel)]="nazivNov">
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="izmeniNaziv()">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                        
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        Mesto odrzavanja
+                    </th>
+                    <td>
+                        <p *ngIf="!izmeniMestoBool">{{radionica.mestoOdrzavanja}}</p>
+                        <input type="text" class="form-control" placeholder="Mesto odrzavanja" aria-describedby="basic-addon1" *ngIf="izmeniMestoBool" [(ngModel)]="mestoNovo">
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="izmeniMesto()">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                        
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        Datum odrzavanja
+                    </th>
+                    <td>
+                        <p *ngIf="!izmeniDatumBool">{{radionica.datum | date :  "dd.MM.y"}}</p>
+                        <mat-form-field appearance="fill"*ngIf="izmeniDatumBool" color="accent">
+                            <mat-label>Datum</mat-label>
+                            <input matInput [matDatepicker]="picker" [(ngModel)]="datumNov">
+                            <mat-hint>Izaberite datum: MM/DD/GGGG</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="izmeniDatum()">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                        
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        Kratak opis
+                    </th>
+                    <td>
+                        <p *ngIf="!izmeniKratakOpisBool">{{radionica.kratakOpis}}</p>
+                        <input type="text" class="form-control" placeholder="Kratak opis" aria-describedby="basic-addon1" *ngIf="izmeniKratakOpisBool" [(ngModel)]="kratakOpisNov">
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="izmeniKratakOpis()">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                        
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        Dugacak opis
+                    </th>
+                    <td>
+                        <p *ngIf="!izmeniDugacakOpisBool">{{radionica.dugacakOpis}}</p>
+                        <input type="text-area" class="form-control" placeholder="Dugacak opis" aria-describedby="basic-addon1" *ngIf="izmeniDugacakOpisBool" [(ngModel)]="dugacakOpisNov">
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="izmeniDugacakOpis()">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                        
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        Broj mesta
+                    </th>
+                    <td>
+                        <p *ngIf="!izmeniUkupanBrojMestaBool">{{radionica.ukupnoMesta}}</p>
+                        <input type="number" class="form-control" placeholder="Broj mesta" aria-describedby="basic-addon1" *ngIf="izmeniUkupanBrojMestaBool" [(ngModel)]="brojMestaNov">
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="izmeniBrojMesta()">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                        
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        Profilna slika
+                    </th>
+                    <td>
+                        <label for="slikaU" class="btn btn-outline-dark ">Profilna slika</label>
+                        <input id="slikaU" type="file" style="visibility:hidden;" (change)="CreateBase64String($event)" class="fileInputProfile form-control">
+                    </td>
+                    <td>
+                        
+                    </td>
+                  </tr>
+                    
+                  <tr style="text-align: center;">
+                    <td colspan="4" class="centar">
+                        <button type="button" class="btn btn-outline-dark" (click)="izmeni()">Izmeni</button>
+                        <br>
+                        <span>{{porukaUspesno}}</span>
+                    </td>
+                  </tr>
+                    
+                </tbody>
+              </table>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h3>Korisnici koji cekaju na odobravanje prisustva na radionici</h3>
+                <span *ngIf="korisniciKojiCekaju.length == 0">Trenutno nema korisnika koji cekaju odobravanje</span>
+                <table class="table" *ngIf="korisniciKojiCekaju.length > 0">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                Korisnicko ime
+                            </th>
+                            <th scope="col">
+                                Odobri
+                            </th>
+                            <th scope="col">
+                                Odbi
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let r of korisniciKojiCekaju">
+                            <td>{{r}}</td>
+                            <td>
+                                <button class="btn btn-outline-dark" (click)="odobri(r)">Odobri</button>
+                            </td>
+                            <td><button class="btn btn-outline-dark" (click)="odbi(r)">Odbi</button></td>
+                        </tr>
+                    </tbody>
+                    </table>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <br>
+        </div>
+        <div class="row" style="text-align: center;">
+            <div class="col-md-6">
+                <button class="btn btn-outline-dark" (click)="otkazi()">Otkazi radionicu</button>
+            </div>
+            <div class="col-md-6">
+                <a [href]="downloadUrl" download="{{filename}}.json">Sacuvaj sablon</a>
+            </div>
+        </div>
+    </div>
+</div>
+

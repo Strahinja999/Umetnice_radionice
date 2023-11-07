@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row"> <br> </div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 centralno-poravnanje">
+            <h3>Forma za resetovanje lozinke</h3>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" [(ngModel)]="email">
+            </div>
+            <button (click)="resetujLozinku()"  type="button" class="btn btn-light">Resetuj lozinku</button>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>

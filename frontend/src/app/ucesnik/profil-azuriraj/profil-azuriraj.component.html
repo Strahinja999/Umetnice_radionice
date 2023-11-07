@@ -1,0 +1,88 @@
+<h1>Ažuriranje profila</h1>
+<table class="table">
+    <tbody>
+      <tr>
+        <th scope="row">
+            <img src="../../../assets/icons8-person-48.png" alt="">
+            Korisničko ime :
+        </th>
+        <td>
+            <p *ngIf="!izmeniKorImeBool">{{ucesnik.korisnickoIme}}</p>
+            <input type="text" class="form-control" placeholder="Korisničko ime" aria-describedby="basic-addon1" *ngIf="izmeniKorImeBool" [(ngModel)]="korImeNovo">
+        </td>
+        <td>
+            <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="izmeniKorIme()">
+                <img src="../../../assets/icons8-edit-24.png" alt="">
+            </button>
+            
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+            <img src="../../../assets/icons8-badge-48.png" alt="">
+            Ime i prezime :
+        </th>
+        <td>
+            <p *ngIf="!izmeniImePrezimeBool">{{ucesnik.ime}} {{ucesnik.prezime}}</p>
+            <div class="input-group" *ngIf="izmeniImePrezimeBool">
+                <input type="text" aria-label="First name" class="form-control" placeholder="Ime" [(ngModel)]="imeNovo">
+                <input type="text" aria-label="Last name" class="form-control" placeholder="Prezime" [(ngModel)]="prezimeNovo">
+              </div>
+        </td>
+        <td>
+            <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="izmeniImePrezime()">
+                <img src="../../../assets/icons8-edit-24.png" alt="">
+            </button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+            <img src="../../../assets/icons8-phone-48.png" alt="">
+            Telefon :
+        </th>
+        <td>
+            <p *ngIf="!izmeniTelefonBool">{{ucesnik.telefon}}</p>
+            <input type="text" class="form-control" placeholder="Telefon" aria-describedby="basic-addon1" *ngIf="izmeniTelefonBool" [(ngModel)]="telefonNov">
+        </td>
+        <td>
+            <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="izmeniTelefon()">
+                <img src="../../../assets/icons8-edit-24.png" alt="">
+            </button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+            <img src="../../../assets/icons8-gmail-logo-48.png" alt="">
+            Email :
+        </th>
+        <td>
+            <p *ngIf="!izmeniEmailBool">{{ucesnik.email}}</p>
+            <input type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon1" *ngIf="izmeniEmailBool" [(ngModel)]="emailNov">
+        </td>
+        <td>
+            <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="izmeniEmail()">
+                <img src="../../../assets/icons8-edit-24.png" alt="">
+            </button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+            <img src="../../../assets/icons8-image-48.png" alt="">
+            Profilna slika:
+        </th>
+        <td>
+            <label for="slikaU" class="btn btn-outline-dark ">Profilna slika</label>
+            <input id="slikaU" type="file" style="visibility:hidden;" (change)="CreateBase64String($event)" class="fileInputProfile form-control">
+        </td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" class="centar">
+            <button type="button" class="btn btn-outline-dark" (click)="izmeni()">Izmeni</button>
+            <br>
+            <span>{{porukaUspesno}}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>

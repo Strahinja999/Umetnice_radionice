@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-3">
+        <h2>Poruke</h2>
+        <div *ngFor="let o of porukeSaUcesnicima">
+            <button class="btn btn-outline-dark" (click)="prikaziPoruke(o)">{{o}}</button>
+            <hr>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div *ngFor="let p of porukePrikaz">
+            <div *ngIf="p.fleg == 1" class="desno">
+                <div>
+                    <p class="margina">{{ucesnikPoruke.ime}} {{ucesnikPoruke.prezime}}, {{p.datum | date : "dd.MM.y, HH:mm"}}</p>
+                    <span class="border border-3 rounded border-dark">{{p.tekst}}</span>
+                </div>
+                <img [src]="ucesnikPoruke.slika" alt="" class="slika rounded-circle">
+                
+            </div>
+            <div *ngIf="p.fleg == 0" class="levo">
+                <img [src]="organizator.slika" alt="" class="slika rounded-circle">
+                <div>
+                    <p class="margina">Ja, {{p.datum | date : "dd.MM.y, HH:mm"}}</p>
+                    <span class="border border-3 rounded border-dark">{{p.tekst}}</span>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="prikaziDugme" class="paddingUP">
+            <hr>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Tekst poruke" [(ngModel)]="tekstPoruke">
+                <button class="btn btn-outline-dark" (click)="posalji()">Posalji</button>
+              </div>
+        </div>
+        
+    </div>
+    <div class="col-md-3"></div>
+</div>

@@ -1,0 +1,55 @@
+<div class="container">
+    <br>
+    <div class="row centar">
+        <div class="col-md-6 raspored">
+            <button class="btn" (click)="nazad()">
+                <img src="../../../assets/icons8-back-arrow-28.png" alt="">
+            </button>
+            <h1>{{radionica.naziv}}</h1>
+        </div>
+        <div class="col-md-6" >
+            <button class="btn btn-outline-dark" *ngIf="imaMesta" (click)="prijaviMe()" [disabled] = "prijavljen">Prijavi se</button>
+            <button class="btn btn-outline-dark" *ngIf="!imaMesta" (click)="obavestiMe()">Obavesti me</button>
+        </div>
+    </div>
+    <div class="row razmak">
+        <div class="col-md-12">
+            <p>{{radionica.dugacakOpis}}</p>
+        </div>
+    </div>
+    <div class="row centar">
+        <div class="col-md-4">
+            <p>
+                <img src="../../../assets/icons8-calendar-date-66.png" alt="">
+                Datum odrzavanja: {{radionica.datum | date :  "dd.MM.y"}}</p> 
+        </div>
+        <div class="col-md-4">
+            <p>
+                <img src="../../../assets/icons8-place-marker-64.png" alt="">
+                Mesto odrzavanja: {{radionica.mestoOdrzavanja}}</p>
+        </div>
+        <div class="col-md-4 razmak">
+            <button class="btn" (click)="lajk()">
+                <img src="../../../assets/icons8-facebook-like-64.png"  alt="">    
+            </button>
+            
+            <div>
+                <p>{{radionica.lajkovi}}</p>
+            </div>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h2>Posalji poruku organizatoru</h2>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Tekst poruke" [(ngModel)]="tekstPoruke">
+                <button class="btn btn-outline-dark" (click)="posalji()">Posalji</button>
+              </div>
+              <span style="color: red;">{{porukaGreska}}</span>
+        </div>
+        <div class="col-md-4"></div>
+        
+    </div>
+</div>

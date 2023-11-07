@@ -1,0 +1,36 @@
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Naziv
+                </th>
+                <th scope="col">
+                    Kratak Opis
+                </th>
+                <th scope="col">
+                    Mesto odrzavanja
+                </th>
+                <th scope="col">
+                    Datum odrzavanja
+                </th>
+                <th scope="col">
+                    Detalji
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let r of mojeRadionice">
+                <td>{{r.naziv}}</td>
+                <td>{{r.kratakOpis}}</td>
+                <td>{{r.mestoOdrzavanja}}</td>
+                <td>{{r.datum | date :  "dd.MM.y"}} </td>
+                <td><a (click)="viseDetalja(r.id)" class="btn btn-outline-dark">Više detalja</a></td>
+            </tr>
+        </tbody>
+        </table>
+</div>
+<div *ngIf="detaljiBool">
+    <app-moja-radionica-detalji></app-moja-radionica-detalji>
+</div>

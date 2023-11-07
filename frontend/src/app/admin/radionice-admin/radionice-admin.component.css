@@ -1,0 +1,11 @@
+.razmak{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.table{
+    text-align: center;
+}
+.centar{
+    text-align: center;
+}

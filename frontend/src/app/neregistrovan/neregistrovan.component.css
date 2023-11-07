@@ -1,0 +1,24 @@
+.centralno-poravnanje{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.card{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.form-select{
+    margin: 5px;
+}
+.input-group{
+    margin: 5px;
+}
+
+.razmak{
+    display: flex;
+    justify-content: space-between;
+}
+
+.img-fluid{
+    max-height: 350px;
+}

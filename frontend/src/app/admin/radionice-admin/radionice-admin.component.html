@@ -1,0 +1,229 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="razmak">
+            <h2>Radionice</h2>
+            <button class="btn btn-outline-dark" (click)="dodajR()">Dodaj novu radionicu</button>
+        </div>
+        
+        <table class="table-striped table ">
+            <thead>
+                <tr>
+                    <th>Organizator</th>
+                    <th>Naziv</th>
+                    <th>Kratak opis</th>
+                    <th>Dugacak opis</th>
+                    <th>Mesto odrzavanja</th>
+                    <th>Datum odrzavanja</th>
+                    <th>Ukupan broj mesta</th>
+                    <th>Broj rezervisanih mesta</th>
+                    <th>Broj lajkova</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let r of radionice"> 
+                    <td>{{r.organizator}}</td>
+                    <td>{{r.naziv}}</td>
+                    <td>{{r.kratakOpis}}</td>
+                    <td>{{r.dugacakOpis}}</td>
+                    <td>{{r.mestoOdrzavanja}}</td>
+                    <td>{{r.datum | date : "dd.MM.y"}}</td>
+                    <td>{{r.ukupnoMesta}}</td>
+                    <td>{{r.rezervisanaMesta}}</td>
+                    <td>{{r.lajkovi}}</td>
+                    <td>
+                        <button class="btn btn-outline-dark" (click)="azurirajR(r)">Azuriraj</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-dark" (click)="obrisiR(r)">Obrisi</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row" *ngIf="radinicaAzurirajBool">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h2>Azuriraj radionicu</h2>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Organizator</th>
+                    <td>
+                        <div  *ngIf="!izmeniOrgBool">
+                            {{radionicaAzuriraj.organizator}}
+                        </div>
+                        <div  *ngIf="izmeniOrgBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="Organizator" [(ngModel)]="organizatorNov">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggle('organizator')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Naziv</th>
+                    <td>
+                        <div *ngIf="!izmeniNazivBool">
+                            {{radionicaAzuriraj.naziv}}
+                        </div>
+                        <div *ngIf="izmeniNazivBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="Naziv" [(ngModel)]="nazivNov">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggle('naziv')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Kratak opis</th>
+                    <td>
+                        <div *ngIf="!izmeniKOpisBool">
+                            {{radionicaAzuriraj.kratakOpis}}
+                        </div>
+                        <div *ngIf="izmeniKOpisBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="Kratak opis" [(ngModel)]="kratakOpisNov">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggle('kratakOpis')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Dugacak opis</th>
+                    <td>
+                        <div *ngIf="!izmeniDOpisBool">
+                            {{radionicaAzuriraj.dugacakOpis}}
+                        </div>
+                        <div *ngIf="izmeniDOpisBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="Dugacak opis" [(ngModel)]="dugacakOpisNov">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggle('dugacakOpis')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Mesto odrzavanja</th>
+                    <td>
+                        <div *ngIf="!izmeniMestoBool">
+                            {{radionicaAzuriraj.mestoOdrzavanja}}
+                        </div>
+                        <div *ngIf="izmeniMestoBool">
+                            <input type="text" name="" id="" class="form-control" placeholder="Mesto odrzavanja" [(ngModel)]="mestoOdrzavanjaNovo">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggle('mestoOdrzavanja')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Datum</th>
+                    <td>
+                        <div *ngIf="!izmeniDatBool">
+                            {{radionicaAzuriraj.datum | date: "dd.MM.y"}}
+                        </div>
+                        <div *ngIf="izmeniDatBool">
+                            <mat-form-field appearance="fill" color="accent" >
+                                <mat-label>Datum</mat-label>
+                                <input matInput [matDatepicker]="picker" [(ngModel)]="datumNov">
+                                <mat-hint>Izaberite datum: MM/DD/GGGG</mat-hint>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggle('datum')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Ukupan broj mesta</th>
+                    <td>
+                        <div *ngIf="!izmeniBrMestaBool">
+                            {{radionicaAzuriraj.ukupnoMesta}}
+                        </div>
+                        <div *ngIf="izmeniBrMestaBool">
+                            <input type="number" name="" id="" class="form-control" placeholder="Ukupno mesta" [(ngModel)]="ukupnoMestaNovo">
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Izmeni" (click)="toggle('ukupnoMesta')">
+                            <img src="../../../assets/icons8-edit-24.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <button class="btn btn-outline-dark" (click)="azurirajRadionicu()">Azuriraj radionicu</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+<div class="row" *ngIf="radionicaDodajBool">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 centar">
+        <h2>Dodaj novu radionicu</h2>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Organizator</span>
+            <input type="text" class="form-control" [(ngModel)]="organizatorN">
+        </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Naziv</span>
+                <input type="text" class="form-control" [(ngModel)]="nazivN">
+            </div>
+            <div>
+                <mat-form-field appearance="fill" color="accent">
+                    <mat-label>Datum</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="datumN"> 
+                    <mat-hint>Unesite datum: MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <br>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Mesto odrzavanja</span>
+                <input type="text" class="form-control" [(ngModel)]="mestoN">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Kratak opis radionice</span>
+                <input type="text" class="form-control" [(ngModel)]="kratakOpisN">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Dugacak opis radionice</span>
+                <input type="text" class="form-control" [(ngModel)]="dugacakOpisN">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Ukupno mesta</span>
+                <input type="number" class="form-control" [(ngModel)]="brMestaN">
+            </div>
+            <div>
+                <button class="btn btn-outline-dark" (click)="dodajRadionicu()">Dodaj radionicu</button>
+                <br>
+                <span style="color:red;">{{porukaDodaj}}</span>
+                <span>{{porukaDodajUspesno}}</span>
+            </div>
+        </div>
+    <div class="col-md-4"></div>
+</div>
+<br>
+<br>

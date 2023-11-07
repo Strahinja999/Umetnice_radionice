@@ -1,0 +1,102 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"></li>
+        </ul>
+        <div class="d-flex center nav-item">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Profil
+                      <img src="../../assets/icons8-customer-50.png" alt="">
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" (click)="promeniLozinku()">Promeni lozinku</a></li>
+                      <li><a class="dropdown-item" (click)="odjaviSe()">Odjavi se</a></li>
+                    </ul>
+                </li>
+              </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+<div class="container" >
+    <h1>Neregistrovan korisnik</h1>
+    <div class="row" *ngIf="!promeniLozinkuBool">
+        <h3>PRETRAGA</h3>
+        <div class="col-md-6 centralno-poravnanje">
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="pretragaKriterijum">
+                <option selected>Kriterujim pretrage</option>
+                <option value="1">Naziv</option>
+                <option value="2">Grad</option>
+                <option value="3">Naziv i grad</option>
+            </select>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Naziv" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="pretragaNaziv">
+                <input type="text" class="form-control" placeholder="Grad" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="pretragaGrad" >
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="pretrazi()">Pretrazi</button>
+                </div> 
+        </div>
+        <div class="col-md-6 centralno-poravnanje">
+            <h3>SORTIRANJE</h3>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-outline-dark me-md-2" type="button" (click)="sortirajPoNazivu()">NAZIV</button>
+                <button class="btn btn-outline-dark" type="button" (click)="sortirajPoDatumu()">DATUM</button>
+              </div>
+        </div>
+    </div>
+    {{porukaGreska}}
+    <br>
+    <div class="row razmak" *ngIf="!promeniLozinkuBool">
+        <div class="card mb-3 border-secondary"*ngFor="let r of aktuelneRadionice">
+            <div class="row g-0">
+                <div class="col-md-4">
+                  <img [src]="r.slika" class="img-fluid rounded-start w-100 h-100" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                  <div class="card-body">
+                  <h5 class="card-title">{{r.naziv}}</h5>
+                  <hr>
+                  <p class="card-text">{{r.kratakOpis}}</p>
+                  <p class="card-text">
+                    Mesto odrzavanja: {{r.mestoOdrzavanja}}
+                  <br> 
+                    Datum odrzavanja: {{r.datum | date :  "dd.MM.y"}} 
+                   </p>
+                  </div>
+              </div>
+          </div>
+    </div>
+    </div>
+    <div class="row" *ngIf="promeniLozinkuBool">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+          <div style="text-align: center;">
+              <h2>Promena lozinke</h2>
+          </div>
+          
+          <div class="input-group mb-3">
+              <span class="input-group-text">Stara lozinka</span>
+              <input type="text" class="form-control" [(ngModel)]="staraLozinka">
+          </div>
+          <hr>
+          <div class="input-group mb-3">
+              <span class="input-group-text">Nova lozinka</span>
+              <input type="password" class="form-control" [(ngModel)]="novaLozinka">
+          </div>
+          <div class="input-group mb-3">
+              <span class="input-group-text">Potvrda nove lozinke</span>
+              <input type="password" class="form-control" [(ngModel)]="potvrdaLozinke">
+          </div>
+          <div style="text-align: center;">
+              <span style="color: red;">{{poruka}}</span>
+          </div>
+          <br>
+          <div style="text-align: center;">
+              <button class="btn btn-outline-dark" (click)="promeniLozinku1()">Promeni lozinku</button>
+          </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+</div>

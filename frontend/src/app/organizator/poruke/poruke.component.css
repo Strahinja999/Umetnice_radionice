@@ -1,0 +1,28 @@
+.desno{
+    text-align: right;
+    display: flex;
+    justify-content: end;
+}
+
+.levo{
+    text-align: left;
+    display: flex;
+}
+.border{
+    padding-top: 15px;
+    padding-left: 5px;
+    padding-bottom: 15px;
+    padding-right: 5px;
+    background-color: lightblue;
+}
+
+.margina{
+    margin-bottom: 20px;
+}
+.paddingUP{
+    padding-top: 10px;
+}
+
+.slika{
+    max-height: 75px;
+}
